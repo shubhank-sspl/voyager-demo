@@ -1,0 +1,10 @@
+{
+  "name": "Laravel + Voyager",
+  "image": "mcr.microsoft.com/devcontainers/php:1-8.2",
+  "features": {
+    "ghcr.io/devcontainers/features/mysql:1": {}
+  },
+  "forwardPorts": [8000],
+  "postCreateCommand": "composer create-project --prefer-dist laravel/laravel . && composer require tcg/voyager:^1.8 && cp .env.example .env && php artisan key:generate && sed -i 's/DB_DATABASE=laravel/DB_DATABASE=codespaces/' .env && sed -i 's/DB_USERNAME=root/DB_USERNAME/vscode/' .env && sed -i 's/DB_PASSWORD=/DB_PASSWORD:/' .env && php artisan migrate && php artisan voyager:install --with-dummy && php artisan voyager:admin admin@admin.com --create --no-interaction",
+  "remoteUser": "vscode"
+}
